@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web Component 示例</title>
+    <style>
+        .contain {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #dfe7ef;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        body {
+
+        }
+
+        my-button {
+            /* CSS rules here */
+            margin-right: 10px;
+        }
+    </style>
+    <script type="module" src="./components/p-button.js"></script>
+</head>
+
+<body>
+    <div class="contain">
+        <my-button  label="提交" color="white"  bg-color="rgb(6, 182, 212)"
+            icon="./icon/loading.png">
+        </my-button>
+        <my-button  label="" color="white" loading bg-color="rgb(6, 182, 212)"
+            icon="./icon/loading.png">
+        </my-button>
+        <my-button  label="提交" color="white" loading bg-color="rgb(6, 182, 212)"
+            icon="./icon/loading.png">
+    </div>
+    <script>
+        // 确保在 DOM 加载后执行
+        document.addEventListener('DOMContentLoaded', () => {
+            const myButton = document.querySelector('my-button');
+            const toggleButton = document.getElementById('toggleLoading');
+            toggleButton.addEventListener('click', () => {
+                if (myButton.hasAttribute('loading')) {
+                    myButton.removeAttribute('loading');
+                } else {
+                    myButton.setAttribute('loading', '');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
